@@ -1,0 +1,87 @@
+
+
+img {
+    display: block;
+
+}
+.links {
+    display: inline-block;
+    background-color: tomato;
+}
+
+.links1 {
+    display: inline-block;
+    background-color: aquamarine;
+}
+
+.sheet1 {
+    background-color: papayawhip;
+    width: 350px;
+    height: 400px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.sheet2 {
+    background-color: teal;
+    width: 400px;
+    height: 200px;
+    vertical-align: middle;
+}
+h2 {
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.sheet3 {
+    background-color: seagreen;
+    width: 590px;
+    height: 400px;
+    vertical-align: middle;
+}
+
+.text3 {
+    display: inline-block;
+    background-color:brown;
+    vertical-align: middle;
+    height:  400px;
+    width: 280px;
+}
+
+.list-sheet {
+    display: inline-block;
+    background-color:aqua;
+    vertical-align: middle;
+    height: 400px;
+}
+.list1 {
+    background-color: aliceblue;
+    
+    font-size: 12px;
+    width: 150px;
+}
+
+.list2 {
+    background-color: aliceblue;
+    vertical-align:top;
+    font-size: 12px;
+    width: 150px;
+    text-align: left;
+}
+
+div {
+    display: inline-block;
+}
+
+h3 {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}

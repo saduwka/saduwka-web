@@ -1,0 +1,21 @@
+.table {
+    border: 2px solid black;
+    /* collapse - объединяет внутри себя все обводки*/
+    border-collapse: collapse;
+    color: darkblue;
+
+    /* separate - разъединяет */
+}
+
+.table th {
+    border: 2px solid black;
+    background-color: gray;
+    text-align: center;
+    padding: 4px;
+}
+
+.table td {
+    border: 2px solid black;
+    background-color: slategray;
+    padding: 4px;
+}

@@ -1,0 +1,22 @@
+h1 {
+    /* цвет текста */
+    color: red;
+    /* цвет фона */
+    background-color: aqua;
+    /* размер шрифта */
+    font-size: 60px;
+    /* толщина текста */
+    font-weight: 900;
+    /* семейство шрифтов */
+    font-family: sans-serif;
+    /* выравнить текст по центру */
+    text-align: center;
+    /* оформление текста */
+    text-decoration: underline;
+    text-decoration: overline;
+    text-decoration: line-through;
+
+    text-transform: lowercase;
+    text-transform: uppercase;
+    text-transform: capitalize;
+}

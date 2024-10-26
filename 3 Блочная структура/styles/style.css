@@ -1,0 +1,63 @@
+p {
+    /* block - делает элемент блочным */
+    display: block;
+
+    /* inline - делает элемент строчным */
+    display: inline;
+
+    background-color: tomato;
+    font-size: 24px;
+    
+    /* для строчных элементов не применяются ширина и высота */
+    width: 200px;
+    height: 200px;
+}
+
+.test {
+    background-color: forestgreen;
+    font-size: 20px;
+
+    /* ширина */
+    width: 600px;
+    /* высота */
+    height: 480px;
+}
+
+
+.box1 {
+    width: 200px;
+    height: 200px;
+    background-color: chocolate;
+    /* Блочно-строчный */
+    display: inline-block;
+
+    vertical-align: middle;
+}
+
+.box2 {
+    width: 400px;
+    height: 400px;
+    background-color: yellowgreen;
+
+    display: inline-block;
+
+    vertical-align: middle;
+}
+.card-green {
+    background-color: green;
+    display: inline-block;
+    width: 450px;
+    height: 300px;
+}
+.card-blue {
+    background-color: blue;
+    display: inline-block;
+    width: 450px;
+    height: 300px;
+}
+.card-purple {
+    background-color: purple;
+    display: inline-block;
+    width: 450px;
+    height: 300px;
+}

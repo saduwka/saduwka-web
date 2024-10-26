@@ -1,0 +1,103 @@
+.container {
+    border: 2px solid red;
+    display: flex;
+    /* выравнивает внутри flex контейнера по главной оси (горизонт) */
+    justify-content: center;
+    justify-content: flex-end;
+    /* первый прижмется к левому краю, последний к правому */
+    justify-content: space-between;
+    /* первый и последний встанут к краям с небольшим отступом */
+    justify-content: space-around;
+    /* одинаковые отступы со всех сторон */
+    justify-content: space-evenly;
+
+
+    /* значение по умолчанию по второй оси (вертикаль) */
+    align-items: flex-start;
+    /* элементы по середине */
+    align-items: center;
+    /* элементы встанут в конец */
+    align-items: flex-end;
+
+
+    flex-wrap: nowrap;
+    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
+    
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    /* направление: в строку */
+    flex-direction: row;
+    /* направление: в колонку */
+    flex-direction: column;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color:cadetblue;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red {
+    background-color: tomato;
+    height: 100px;
+}
+
+.container2 {
+    border: 2px solid black;
+    display: flex;
+    width: 1000px;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.boox {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.header {
+    background-color: red;
+}
+.nav {
+    background-color: deepskyblue;
+}
+
+.section {
+    background-color:goldenrod;
+    width: 600px;
+    height: 200px;    
+}
+.article {
+    background-color: orange;
+    width: 600px;
+    height: 200px;   
+}
+.aside {
+    background-color: pink;
+    height: 423px;
+    width: 375px;
+}
+.footer {
+    background-color: grey;
+}
+.main {
+    display: flex;
+    gap: 20px;
+}
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}

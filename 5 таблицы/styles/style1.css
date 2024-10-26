@@ -1,0 +1,33 @@
+.table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+.table th { 
+    border: 2px solid black;
+    padding: 2px;
+}
+.table td {
+    border: 2px solid black;
+    padding: 2px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.lorem {
+    font-size: 400px;
+}
+
+.astana {
+    font-style: italic;
+
+}
+
+.bay {
+    font-style:italic;
+}
+
+.nur {
+    font-style: italic;
+}

@@ -1,0 +1,27 @@
+h1 {
+    color: darkblue;
+    font-size: 30px;
+    font-family: sans-serif;
+    text-align: center;
+}
+li {
+    color: black;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+h2 {
+    color: black;
+    font-size: 30px;
+}
+p {
+    color: darkblue;
+    background-color: aquamarine;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+ul {
+    color: darkblue;
+    background-color: aquamarine;
+    font-size: 15px;
+    font-family: sans-serif;
+}

@@ -1,0 +1,64 @@
+.container {
+    /* border - рамка */
+    border-width: 2px;
+    /* стиль рамки */
+    border-style: solid;
+    border-color: forestgreen;
+    
+    margin: auto;
+    width: 1300px;
+}
+
+.content {
+    width: 600px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    display: inline-block;
+    vertical-align: middle;
+    /* margin-внешний отступ */
+    margin-left: 20px;
+    /* margin: auto = выравнивает по горизонтали */
+}
+
+.list {
+    display: inline-block;
+    vertical-align: middle;
+    border-width: 1px;
+    border-color:teal;
+    border-style: solid;
+}
+
+.content-1 {
+    /* padding-отступ */
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+}
+
+.content-2 {
+    display: inline-block;
+}
+
+.pudge {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Text-1 {
+    width: 300px;
+    background-color: aqua;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.links {
+    display: inline-block;
+    vertical-align: middle;
+}

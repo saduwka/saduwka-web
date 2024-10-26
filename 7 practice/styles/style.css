@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* говорит браузеру не учитывать padding и border при расчете размеров */
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+.container {
+    width: 1440px;
+    margin: auto;
+}
+
+.headings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.heading {
+    font-size: 30px;
+}
+
+.sub-heading {
+    font-size: 20px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-text, .feat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-icon, .feat-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.wrapper {
+    width: 940px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    padding: 70px 0;
+}
+
+.info-heading, .feat-heading {
+    font-size: 22px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.feat-list {
+    display: flex;
+    gap: 20px;
+}
+
+.partners {
+    background-color: #a1bfd4;
+    display: flex;
+    justify-content: center;
+}
+
+.partners-list {
+    width: 940px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

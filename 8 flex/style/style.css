@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.header {
+    background-color: tomato;
+    font-size: 40px;
+}
+
+.footer {
+    background-color: forestgreen;
+    font-size: 40px;
+}
+
+.main {
+    background-color: beige;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.aside{ 
+    background-color: cadetblue;
+    font-size: 40px;
+    min-width: 300px;
+    max-width: 100%;
+    flex-grow: 1;
+}
+
+.section {
+    background-color: steelblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* flex-wrap: wrap делает перенос при нехватке места */
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 700px;
+    flex-grow: 3;
+}
+
+.box {
+
+    /*  */
+    flex-grow: 1;
+    flex-shrink: 1;
+    /* max-width: 300px;
+    min-width: 100px; */
+    flex-basis: 220px;
+    height: 100px;
+    background-color: orangered;
+}
+
+.grow {
+    flex-grow: 2;
+    flex-shrink: 1;
+    background-color: red;
+}
+
+.shrink {
+    flex-shrink: 0;
+    background-color: violet;
+}
+
+
+
+.test {
+    width: 100%;
+    display: flex;
+}
+
+.elem {
+    font-size: 40px;
+    flex-basis: 200px;
+    border: 2px solid black;
+}
+
+.elem-shrink {
+    flex-shrink: 2;
+}
