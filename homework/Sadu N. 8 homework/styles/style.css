@@ -202,7 +202,21 @@
 }
 
 .header-5 {
+    width: 500px;
+    position: relative;
+}
+
+.cont5-head {
     font-size: 48px;
+    position: relative;
+    z-index: 2;
+} 
+
+.decor {
+    position: absolute;
+    z-index: 1;
+    right: 90px;
+    top: 30px;
 }
 
 .cont5-imgs {

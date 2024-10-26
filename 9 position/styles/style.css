@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.parent-box {
+    width: 200px;
+    height: 2000px;
+    background-color: orange;
+
+    /* absolute - вырезает элемент из потока и другие элементы не учитывают его размеры */
+    /* position: absolute; */
+    /* relative - все элементы теперь будут позиционироваться относительно элемента */
+    position: relative;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: brown;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.green {
+    width: 75px;
+    height: 25px;
+    background-color: green;
+    z-index: 2;
+}
+
+.round {
+    width: 100px;
+    height: 100px;
+    background-color: cadetblue;
+    border-radius: 100px;
+    /* fixed - вырезается из потока и фиксируется на экране */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.text {
+    height: 1500px;
+}
+
+.sticky {
+    background-color: orangered;
+    width: 100%;
+    height: 200px;
+
+    position: sticky;
+    /* top: 100px; */
+    bottom: 100px;
+    z-index: 5;
+}
