@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.lights {
+    border: 2px solid black;
+    width: 300px;
+    height: 600px;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.light {
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.smile {
+    display: flex;
+    justify-content: flex-end;
+    margin: 50px;
+}
+
+.face {
+    border-radius: 600px;
+    width: 600px;
+    height: 600px;
+    background-color: aquamarine;
+    position: relative;
+}
+
+.eye {
+    border-radius: 150px;
+    width: 130px;
+    height: 130px;
+    background-color: white;
+}
+
+.right {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+}
+
+.left {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+
+
+.nose {
+   width: 90px;
+   height: 90px; 
+   background-color: white;
+   position: absolute;
+   left: 255px;
+   top: 255px;
+}
+
+.mouth {
+   width: 250px;
+   height: 20px;
+   background-color: white;
+   position: absolute;
+   left: 180px; 
+   bottom: 150px;
+}
