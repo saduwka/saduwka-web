@@ -1,0 +1,130 @@
+.row {
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: peru;
+    /* transition - скорость трансформации */
+    transition: ease-in-out 0.3s;
+
+}
+
+
+/* hover - стили при наведении */
+.box:hover {
+    background-color: tomato;
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+}
+
+.green {
+    background-color: forestgreen;
+    border: 6px solid forestgreen; 
+}
+
+.green:active {
+    background-color: darkolivegreen;
+    border: 6px solid black; 
+}
+
+/* .green:hover {
+    display: none;
+} */
+
+.block {
+    font-size: 20px;
+    font-family: sans-serif;
+    position: relative;
+    /* z-index: 1; */
+}
+
+.block::after {
+    content: "";
+    background-image: url("https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg");
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; 
+}
+
+/* .block::before {
+    content: "BEFORE";
+} */
+
+.decor {
+    position: relative;
+    width: 100px;
+    text-align: center;
+}
+
+.decor::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* transparent - прозрачный */
+    border: 2px solid transparent;
+    left: 0;
+    top: 0;
+    transition: .3s;
+}
+
+/* при наведении на decor - применить стили к after */
+.decor:hover::after {
+    border-color: cadetblue;
+
+}
+
+.transform-box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    transition: .3s;
+}
+
+.transform-box:hover {
+    transform: rotateX(15deg) rotateY(60deg);
+}
+
+.translate-box {
+    width: 100px;
+    height: 100px;
+    background-color: olivedrab;
+    transition: .3s;
+    position: relative;
+}
+
+
+
+.translate-box:hover {
+    /*  y */
+    transform: translate(-20px, 50px);
+}
+
+.translate-box::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: black;
+    width: 25px;
+    height: 25px;
+}
+
+.scale-box {
+    width: 100px;
+    height: 100px;
+    background-color: palegreen;
+    transition: .4s;
+}
+
+.scale-box:hover {
+    transform: scaleX(.5) scaleY(1.3);
+}
