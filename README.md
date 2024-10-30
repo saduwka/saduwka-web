@@ -10,5 +10,4 @@ The repository is structured by lesson topics to make it easy to follow and refe
 
 To view the HTML and CSS files, you can clone the repository and open the `.html` files in your browser.
 
-```bash
-git clone https://github.com/your-username/web-development-course.git
+
