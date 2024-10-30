@@ -15,7 +15,7 @@
     /* задержка перед запуском */
     /* animation-delay: s; */
 
-    /* animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); */
+    animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
 
     /* animation-iteration-count: 3; */
     /* backwards - стили до анимации */
