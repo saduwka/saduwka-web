@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+#comment {
+    /* both - по умолчанию */
+    resize: both;
+    resize: none;
+}
+
+.input-email {
+    border: 0;
+    padding: 6px 4px;
+    background-color:skyblue;
+    font-size: 20px;
+    border-radius: 6px;
+    color: #fff;
+    border-bottom: 2px solid transparent;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: ease .3;
+    text-align: center;
+}
+
+.input-email:focus {
+    outline: none;
+    border-bottom: 2px solid #000;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 200px;
+}
+
+.beaty-input {
+    width: 100%;
+    padding: 6px 4px 6px 8px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    text-align: center;
+}
+
+.beaty-input::placeholder {
+    color: #aaa;
+    font-size: 18px;
+}
+
+.decor::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    transform: translateX(-50%);
+    height: 2px;
+    background-color: red;
+    transition: ease .9s;
+}
+
+.beaty-input:focus + .decor::after {
+    width: 100%;
+}
+
+#blue {
+    display: none;
+}
+
+#blue-label {
+    display: block;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #000;
+    border-radius: 100%;
+    transition: .3s;
+}
+
+#blue:checked + #blue-label {
+    background-color: steelblue;
+}
+
+.elem + .next-elem {
+    /* стили для .next-elem который будет идти полсе .elem */
+}
+
+.elem ~ .next-elem {
+    /* стили для .next-elem который может идти через несколько тегов */
+}
+
+.elem > .next-elem {
+    /* .next-elem = диет сразу после открытия тега .elem */
+}
