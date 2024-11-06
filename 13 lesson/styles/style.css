@@ -23,7 +23,8 @@ li {
 }
 
 .header {
-    width: 940px;
+    max-width: 940px;
+    width: 100%;
     margin: auto;
     display: flex;
     align-items: center;
@@ -54,6 +55,20 @@ li {
 
 .nav-link:hover {
     color: var(--text-accent);
+}
+
+.burger-menu {
+    width: 25px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--bg-footer);
 }
 
 .container {
@@ -112,7 +127,6 @@ li {
 }
 
 .what-container {
-    width: 940px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,6 +248,20 @@ li {
     gap: 20px;
 }
 
+.services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.services-textbtn {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
 .services-h3 {
     font-weight: 400;
     font-size: 20px;
@@ -252,7 +280,8 @@ li {
 }
 
 .services-btn {
-    padding: 10px 30px;
+    margin: 0 140px;
+    padding: 10px 10px;
     background-color: transparent;
     border: 1px solid #fff;
     color: #fff;
@@ -263,6 +292,7 @@ li {
     font-weight: 400;
     border-radius: 4px;
     transition: .3s;
+    
 }
 
 .services-btn:hover {
@@ -460,4 +490,142 @@ li {
     line-height: 20px;
     text-align: center;
     color: #9E9E9E;
+}
+
+@media (max-width: 475px) {
+
+    .wrapper {
+        padding: 0 8px;
+    }
+
+    .header {
+        flex-direction: row-reverse;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .nav {
+        display: none;
+    }
+    
+    .burger-menu {
+        display: flex;
+    }
+
+    .intro-container {
+        padding: 120px 0;
+    }
+
+    .intro-heading {
+        font-size: 34px;
+        text-align: center;
+    }
+
+    .intro-btns {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 25px;
+    }
+
+    .intro-btns button {
+        flex-grow: 1;
+        width: 100%;
+    }
+
+    .what-container {
+        margin: 60px 0;
+        gap: 30px;
+    }
+
+    .what-header {
+        max-width: 940px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .what-heading {
+        font-size: 24px;
+    }
+    
+    .what-boxs {
+        flex-direction: column;
+        padding: 0 8px;
+    }
+
+    .services-wrapper {
+        background-color: transparent;
+    }
+
+    .services-header {
+        flex-direction: column-reverse;
+    }
+
+    .services-heading {
+        color: #000;
+    }
+
+    .services-subheading {
+        color: #000;
+    }
+
+    .services-img {
+        background-color: #192024;
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    .services-text {
+        flex-direction: row;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .services-textbtn {
+        flex-direction: row;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .services-imgs {
+        flex-direction: column-reverse;
+        width: 70%;
+    }
+    
+    .services-img img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .services-btn {
+        margin: 0;
+    }
+
+    .tab-btns {
+        flex-direction: column;
+    }
+
+    .tab-img img {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .footer {
+        flex-direction: column;
+    }
+    
+    .footer-block {
+        padding: 5px 8px;
+    }
+
+    .ending-h2 {
+        margin: 40px 40px;
+        text-align: center;
+        font-size: 11px;
+    }
 }
