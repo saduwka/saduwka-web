@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+header {
+    display: flex;
+    max-width: 1440px;
+    width: 100%;
+    justify-content: space-between;
+}
+.burger-menu {
+    width: 25px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #131313;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo-h2 {
+    color: #7421B0;
+    font-family: "Rubik";
+    font-size: 22px;
+}
+
+.logo-h4 {
+    color: #484848;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.logo-img {
+    display: flex;
+    width: 60px;
+    height: 60px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+li {
+    list-style-type: none;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    font-family: "Rubik";
+    gap: 60px;
+}
+
+
+
+.nav-ul {
+    display: flex;
+    gap: 60px;
+}
+
+.nav-li {
+
+    transition: .3s;
+}
+
+.nav-li:hover {
+    transform: scale(105%, 105%);
+    color: #7421B0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner {
+    margin: 100px;
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+}
+
+.banner-box1 {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.banner-heading {
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-h2 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-family: "Rubik";
+    font-weight: 700;
+    font-size: 48px;
+    color: #131313;
+}
+
+.h2-decor {
+    display: flex;
+    position: absolute;
+    top: 325px;
+    left: 225px;
+}
+
+.one-click {
+    color: #7421B0;
+}
+
+.banner-subhead {
+    max-width: 460px;
+    width: 100%;
+    font-weight: 400;
+    font-family: "Rubik";
+    font-size: 18px;
+    color: #828282;
+}
+
+.banner-btn {
+    max-width: 235px;
+    width: 100%;
+    font-family: "Rubik";
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(#7421B0, #D08EFF);
+    padding: 23px 41px;
+    border-radius: 5px;
+    border: 0;
+    transition: .3s;
+}
+
+.banner-btn:hover {
+    transform:scale(105%, 105%)
+}
+
+.banner-box2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.bannerimg {
+    max-width: 670px;
+    width: 100%;
+    max-height: 385px;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.banner-bg {
+    max-width: 800px;
+    width: 100%;
+    max-height: 500px;
+    height: 100%;
+    border: 0;
+    border-radius: 70px;
+    background: linear-gradient(#7421b0, #d08eff);
+    position: absolute;
+    z-index: -1;
+    top: 140px;
+    right: 20px;
+}
+
+.banner-decor {
+    max-width: 230px;
+    width: 100%;
+    padding: 26px 21px;
+    font-family: "Rubik";
+    font-weight: 400;
+    font-size: 16px;
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(196, 196, 196, 0.4);
+    backdrop-filter: blur(2px);
+    right: 333px;
+    top: 526px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.bricks {
+    max-width: 1440px;
+    width: 100%;
+    margin: 200px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.bricks-head {
+    display: flex;
+    justify-content: flex-start;
+    gap: 140px;
+
+}
+
+.bricks-h2 {
+    font-family: "Rubik";
+    font-weight: 700;
+    font-size: 36px;
+    color: #131313;
+    max-width: 500px;
+    width: 100%;
+}
+
+.two-one {
+    color: #7421b0;
+}
+
+.bricks-head2 {
+    font-family: "Rubik";
+    font-weight: 400px;
+    font-size: 18px;
+    color: #828282;
+    max-width: 570px;
+    width: 100%;
+}
+
+.par-bolt {
+    font-weight: bold;
+}
+
+.bricks-boxs {
+    display: flex;
+    gap: 30px;
+}
+
+.bricks-box {
+    display: flex;
+    flex-direction: column;
+    max-width: 340px;
+    width: 100%;
+    max-height: 295px;
+    height: 100%;
+    border-radius: 10px;
+    padding: 50px;
+    color: #131313;
+    box-shadow: 5px 5px 5px #131313;
+    transition: .3s;
+}
+
+.bricks-box:hover {
+    background-color: #7421B0;
+    color: #fff;
+}
+
+.box-h5 {
+    font-family: "Rubik";
+    font-weight: 500;
+    font-size: 20px;
+}
+.box-img {
+    width: 80px;
+    height: 80px;
+}
+
+
+@media screen and (max-width: 475px) {
+.wrapper {
+    padding: 0;
+    margin: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+header {
+    padding: 20px 0;
+}
+    .logo-h2 {
+        font-size: 12px;
+    }
+
+    .logo-h4 {
+        font-size: 6px;
+    }
+
+    .logo-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    main {
+        gap: 0;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .banner {
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .banner-box1 {
+        margin: 70px 0;
+        align-items: center;
+    }
+
+    .banner-heading {
+        align-items: center;
+        text-align: center;
+    }
+
+    .banner-subhead {
+        text-align: center;
+        font-size: 12px;
+        padding: 0 30px;
+    }
+
+    .banner-h2 {
+        font-size: 24px;
+    }
+
+    .banner-btn {
+        width: 50%;
+        font-size: 10px;
+        padding: 20px 10px;
+    }
+
+    .h2-decor {
+        top: 396px;
+        left: 61px;
+        transform: scale(50%, 50%);
+    }
+
+    .bannerimg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .banner-bg {
+        left: 66px;
+        top: 70px;
+        width: 81%;
+        height: 30%;
+    }
+
+    .banner-decor {
+        padding: 5px;
+        left: 83px;
+        top: 256px;
+        width: 50%;
+        height: 8%;
+        font-size: 10px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bricks-head {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bricks-h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .bricks-par {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .bricks-boxs {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bricks {
+        margin: 0;
+    }
+
+    .bricks-box {
+        width: 90%;
+        height: 50%;
+        padding: 10px;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .box-img {
+        transform: scale(0.5);
+    }
+
+    .box-h5 {
+        font-size: 14px;
+        text-align: center;
+        padding: 0 10px;
+    }
+}
