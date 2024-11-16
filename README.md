@@ -1,6 +1,6 @@
 # Web Development Course Notes
 
-This repository contains my HTML and CSS projects and exercises from my web development course. Each folder and file includes various projects and coding exercises designed to practice and demonstrate skills in HTML and CSS.
+This repository contains my HTML, CSS, JS projects and exercises from my web development course. Each folder and file includes various projects and coding exercises designed to practice and demonstrate skills in HTML and CSS.
 
 ## Repository Structure
 
