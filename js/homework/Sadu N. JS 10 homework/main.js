@@ -105,7 +105,13 @@ function findHighAverage(students){
 const bestStudents = findHighAverage(gpa);
 console.log(bestStudents);
 
+function highPhysics(student){
+    return student.grades.physics > 80
+}
 
+const studentsHighPhysics = students.filter(highPhysics);
+
+console.log(studentsHighPhysics);
 
 
 
