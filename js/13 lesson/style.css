@@ -1,0 +1,7 @@
+.box-square {
+    border-radius: 0;
+}
+
+.box-round {
+    border-radius: 100%;
+}

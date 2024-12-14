@@ -34,61 +34,63 @@
 
 // deleteImage();
 
-// const container = document.querySelector('.container');
+const container = document.querySelector('.container');
 
-// function getRandomValue() {
-//     const random = Math.floor(Math.random() * 255);
-//     // console.log(random);
-//     return random;
-// }
+function getRandomValue() {
+    const random = Math.floor(Math.random() * 255);
+    // console.log(random);
+    return random;
+}
 
-// function deleteRedBoxes() {
-//     let color = container.children[0].getAttribute('style');
-//     const startIndex = color.indexOf('rgb(') + 4;
-//     const endIndex = color.indexOf(")");
 
-//     const rgbString = color.substring(startIndex, endIndex);
-//     const red = rgbString.split(", ")[0];
 
-//     console.log(red);
+function deleteRedBoxes() {
+    let color = container.children[0].getAttribute('style');
+    const startIndex = color.indexOf('rgb(') + 4;
+    const endIndex = color.indexOf(")");
+
+    const rgbString = color.substring(startIndex, endIndex);
+    const red = rgbString.split(", ")[0];
+
+    for (let i = 0; i < container.children.length; i++){
+        if (red > 100){
+            container.removeChild(container.children[i]);
+        }
+    }
+    // console.log(color[startIndex]);
+    // console.log(color);
+ }
+
+function generateSquares(count = 100){
+    for (let i = 0; i < count; i++){
+    const newElem = document.createElement("div");
+
+    newElem.classList.add("box");
     
-//     console.log(color[startIndex]);
-//     console.log(color);
-    
-    
+    const red = getRandomValue();
+    const blue = getRandomValue();
+    const green = getRandomValue();
 
-// }
+    newElem.style.backgroundColor = `rgb(${red}, ${blue} ,${green})`
 
-// function generateSquares(count = 100){
-//     for (let i = 0; i < count; i++){
-//     const newElem = document.createElement("div");
+    container.append(newElem);
+    }
+}
 
-//     newElem.classList.add("box");
-    
-//     const red = getRandomValue();
-//     const blue = getRandomValue();
-//     const green = getRandomValue();
+generateSquares(100);
 
-//     newElem.style.backgroundColor = `rgb(${red}, ${blue} ,${green})`
-
-//     container.append(newElem);
-//     }
-// }
-
-// generateSquares(100);
-
-// deleteRedBoxes();
+deleteRedBoxes();
 
 
-const container1 = document.querySelector(".container1");
+// const container1 = document.querySelector(".container1");
 
-const inputWidth = prompt("Введите ширину");
-const inputHeigh = prompt("Введите высоту");
-const inputColor = prompt("Введите цвет фона");
-const inputBorderWidth = prompt("Введите ширину рамки");
-const inputBorderColor = prompt("Введите цвет рамки");
+// const inputWidth = prompt("Введите ширину");
+// const inputHeigh = prompt("Введите высоту");
+// const inputColor = prompt("Введите цвет фона");
+// const inputBorderWidth = prompt("Введите ширину рамки");
+// const inputBorderColor = prompt("Введите цвет рамки");
 
-container1.style.width = inputWidth + "px";
-container1.style.heigh = inputHeigh + "px";
-container1.style.backgroundColor = inputColor;
-container1.style.border = `${inputBorderWidth}px, solid, ${inputBorderColor}`
+// container1.style.width = inputWidth + "px";
+// container1.style.heigh = inputHeigh + "px";
+// container1.style.backgroundColor = inputColor;
+// container1.style.border = `${inputBorderWidth}px, solid, ${inputBorderColor}`;
