@@ -1,10 +1,39 @@
 {
-    "editor.formatOnPaste": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "prettier.useTabs": true,
-    "prettier.semi": false,
-    "prettier.jsxSingleQuote": true,
-    "prettier.singleQuote": true,
-    "prettier.arrowParens": "avoid",
-    "cSpell.language": "en,ru"
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"prettier.useTabs": true,
+	"prettier.semi": true,
+	"prettier.jsxSingleQuote": false,
+	"prettier.singleQuote": false,
+	"prettier.arrowParens": "always",
+	"cSpell.language": "en,ru",
+	"editor.wordWrap": "on",
+	"prettier.trailingComma": "all",
+	"git.confirmSync": false,
+	"javascript.validate.enable": true,
+	"javascript.suggest.names": true,
+	"editor.comments.insertSpace": true,
+
+	// Хлебные крошки
+	"breadcrumbs.enabled": false,
+
+	// Включает автодополнения внутри строк. Например, если в строке начинаешь вводить "hel", редактор предложит варианты вроде "hello".
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+
+	// Устанавливает тему и настраивает подсветку переменных. Например, делает их курсивом и окрашивает в другой цвет.
+	"workbench.colorTheme": "One Dark Pro",
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{
+				"scope": "variable",
+				"settings": {
+					"fontStyle": "italic",
+					"foreground": "#FF9E64"
+				}
+			}
+		]
+	}
 }
