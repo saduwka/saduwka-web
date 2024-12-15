@@ -16,7 +16,7 @@
 	"editor.comments.insertSpace": true,
 
 	// Хлебные крошки
-	"breadcrumbs.enabled": false,
+	"breadcrumbs.enabled": true,
 
 	// Включает автодополнения внутри строк. Например, если в строке начинаешь вводить "hel", редактор предложит варианты вроде "hello".
 	"editor.quickSuggestions": {
