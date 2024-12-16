@@ -4,7 +4,7 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"prettier.useTabs": true,
 	"prettier.semi": true,
-	"prettier.jsxSingleQuote": false,
+
 	"prettier.singleQuote": false,
 	"prettier.arrowParens": "always",
 	"cSpell.language": "en,ru",
