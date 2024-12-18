@@ -3,23 +3,29 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Montez&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="style.css" />
 		<title>Document</title>
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="wrapper">
-				<head>
-					<h2>To do list</h2>
-				</head>
-				<form class="input-form">
-					<label for="input-date">Выберите день</label>
-					<input type="date" id="input-date" />
-					<label for="task-text">Введите задачу</label>
-					<input type="text" id="task-text" />
-					<button class="submit-btn">Записать</button>
-				</form>
-			</div>
+			<head>
+				<h2 class="heading">To do list</h2>
+			</head>
+			<form class="input-form">
+				<label for="input-date">Выберите день</label>
+				<input type="date" id="input-date" />
+				<label for="task-text">Введите задачу</label>
+				<input type="text" id="task-text" />
+				<button class="submit-btn">Записать</button>
+				<button class="reset-btn">Сброс</button>
+			</form>
+
 			<div class="table">
 				<div class="tasks-head">
 					<h2>Задачи</h2>

@@ -1,5 +1,6 @@
 const chooseDay = document.querySelector("#input-date");
 const submitBtn = document.querySelector(".submit-btn");
+const resetBtn = document.querySelector(".reset-btn");
 const task = document.querySelector("#task-text");
 const tasksText = document.querySelector(".tasks-text");
 
@@ -28,6 +29,11 @@ const septemberTask2025 = document.querySelector("#september-task-2025");
 const octoberTask2025 = document.querySelector("#october-task-2025");
 const novemberTask2025 = document.querySelector("#november-task-2025");
 const decemberTask2025 = document.querySelector("#december-task-2025");
+
+resetBtn.addEventListener("click", (event) => {
+	localStorage.clear();
+	alert("Все данные сброшены");
+});
 
 submitBtn.addEventListener("click", (event) => {
 	event.preventDefault();
@@ -84,7 +90,12 @@ submitBtn.addEventListener("click", (event) => {
 
 	newTask.appendChild(checkBox);
 	newTask.appendChild(taskText);
-	// tasksText.appendChild(newTask);
+
+	const tasksKey = `${year}-${month}`;
+	let tasks = JSON.parse(localStorage.getItem(tasksKey)) || [];
+	tasks.push({ day, monthName, taskValue, completed: false });
+	localStorage.setItem(tasksKey, JSON.stringify(tasks));
+
 	if (month == "01" && year == "2024") {
 		januaryTask.appendChild(newTask);
 	} else if (month == "02" && year == "2024") {
@@ -157,3 +168,57 @@ for (let i = 0; i < acc.length; i++) {
 		}
 	});
 }
+
+window.addEventListener("load", () => {
+	// Загружаем задачи из localStorage при загрузке страницы
+	const months = [
+		{ element: januaryTask, key: "2024-01" },
+		{ element: februaryTask, key: "2024-02" },
+		{ element: marchTask, key: "2024-03" },
+		{ element: aprilTask, key: "2024-04" },
+		{ element: mayTask, key: "2024-05" },
+		{ element: juneTask, key: "2024-06" },
+		{ element: julyTask, key: "2024-07" },
+		{ element: augustTask, key: "2024-08" },
+		{ element: septemberTask, key: "2024-09" },
+		{ element: octoberTask, key: "2024-10" },
+		{ element: novemberTask, key: "2024-11" },
+		{ element: decemberTask, key: "2024-12" },
+		{ element: januaryTask2025, key: "2025-01" },
+		{ element: februaryTask2025, key: "2025-02" },
+		{ element: marchTask2025, key: "2025-03" },
+		{ element: aprilTask2025, key: "2025-04" },
+		{ element: mayTask2025, key: "2025-05" },
+		{ element: juneTask2025, key: "2025-06" },
+		{ element: julyTask2025, key: "2025-07" },
+		{ element: augustTask2025, key: "2025-08" },
+		{ element: septemberTask2025, key: "2025-09" },
+		{ element: octoberTask2025, key: "2025-10" },
+		{ element: novemberTask2025, key: "2025-11" },
+		{ element: decemberTask2025, key: "2025-12" },
+	];
+
+	months.forEach(({ element, key }) => {
+		const savedTasks = JSON.parse(localStorage.getItem(key)) || [];
+		savedTasks.forEach((task) => {
+			const newTask = document.createElement("li");
+			const checkBox = document.createElement("input");
+			checkBox.type = "checkbox";
+			checkBox.checked = task.completed;
+			checkBox.addEventListener("change", () => {
+				task.completed = checkBox.checked;
+				localStorage.setItem(key, JSON.stringify(savedTasks));
+				newTask.style.textDecoration = checkBox.checked
+					? "line-through"
+					: "none";
+			});
+
+			const taskText = document.createElement("span");
+			taskText.textContent = ` ${task.day} ${task.monthName}: ${task.taskValue}`;
+			newTask.appendChild(checkBox);
+			newTask.appendChild(taskText);
+			newTask.style.textDecoration = task.completed ? "line-through" : "none";
+			element.appendChild(newTask);
+		});
+	});
+});

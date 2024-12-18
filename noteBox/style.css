@@ -1,0 +1,17 @@
+li {
+	list-style: none;
+}
+
+.delete-btn {
+	display: none;
+	font-size: 10px;
+	transition: 0.3s;
+	margin-left: 10px;
+	border-radius: 10px;
+	background-color: transparent;
+	border: 2px solid grey;
+}
+
+.delete-btn:hover {
+	scale: 110%;
+}
