@@ -17,9 +17,35 @@ let firstCard = null;
 let secondCard = null;
 
 const boardElem = document.querySelector(".board");
+const restartBtn = document.querySelector(".restart");
+const score = document.querySelector(".scores");
+let points = 0;
+
+restartBtn.addEventListener("click", () => {
+	clearBoard();
+});
+
+const clearBoard = () => {
+	const boardCards = boardElem.childNodes;
+	boardCards.forEach((card) => {
+		console.log(card);
+		boardElem.removeChild(card);
+	});
+};
+
+const shuffleCards = (cardsArr) => {
+	for (let i = 0; i < cardsArr.length; i++) {
+		const randomIndex = Math.floor(Math.random() * (cardsArr.length - 1));
+
+		[cardsArr[i], cardsArr[randomIndex]] = [cardsArr[randomIndex], cardsArr[i]];
+	}
+	return cardsArr;
+};
 
 const createBoard = () => {
-	cardsArr.forEach((card) => {
+	const shuffledCards = shuffleCards(cardsArr);
+
+	shuffledCards.forEach((card) => {
 		const cardElem = document.createElement("div");
 		cardElem.classList.add("card");
 		cardElem.textContent = card.text;
@@ -45,6 +71,11 @@ const unflipCards = () => {
 
 */
 
+const updateScore = (value) => {
+	points += value;
+	score.textContent = points;
+};
+
 const hideMatchedCards = () => {
 	if (firstCard && secondCard) {
 		firstCard.style.display = "none";
@@ -55,14 +86,19 @@ const hideMatchedCards = () => {
 const checkCards = () => {
 	const firstCardName = firstCard.dataset.name;
 	const secondCardName = secondCard.dataset.name;
+
+	if (firstCard == secondCard) {
+		return false;
+	}
 	return firstCardName == secondCardName;
 };
 
 const flipCard = (event) => {
 	const target = event.target;
 	const card = target.closest(".card");
+	console.log(event);
 
-	if (card) {
+	if (card && firstCard != card) {
 		card.classList.add("flip");
 	}
 
@@ -73,13 +109,22 @@ const flipCard = (event) => {
 	}
 	if (firstCard && secondCard) {
 		const match = checkCards();
-		match ? hideMatchedCards() : unflipCards();
+		match
+			? (hideMatchedCards(), updateScore(50))
+			: (unflipCards(), updateScore(-50));
 		firstCard = null;
 		secondCard = null;
 	}
+
+	console.log(points);
+
 	console.log(firstCard);
 	console.log(secondCard);
 };
 
 createBoard();
 boardElem.addEventListener("click", flipCard);
+
+// = - присваивание
+// == - проверка на равенство (по значению)
+// === - проверка на равенство (по значению и по типу)
