@@ -3,22 +3,35 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Su-Li-Fa</title>
+		<link rel="stylesheet" href="style.css" />
+		<title>Су-Ли-Фа</title>
 	</head>
 	<body>
-		<div class="game-board">
-			<h2 class="board-head">Су-Ли-ФА</h2>
-			<p class="description">Игра в Су-Ли-ФА</p>
-
-			<div class="board" id="result">Выберите свой ход.</div>
-
-			<div class="btn-board">
-				<button class="button" id="rock">Камень</button>
-				<button class="button" id="scissors">Ножницы</button>
-				<button class="button" id="paper">Бумага</button>
+		<div class="wrapper">
+			<div class="game-board">
+				<h2 class="board-head">Су-Ли-Фа</h2>
+				<p class="description">
+					Су-Ли-ФА — это простая и увлекательная игра, известная как “Камень,
+					ножницы, бумага”. Смысл игры заключается в том, чтобы выбрать один из
+					трёх вариантов (Камень, Ножницы, Бумага) и попытаться обыграть
+					компьютер.
+				</p>
+				<div class="btn-board">
+					<button class="button" id="rock">Камень</button>
+					<button class="button" id="scissors">Ножницы</button>
+					<button class="button" id="paper">Бумага</button>
+				</div>
+				<div class="board" id="who-win">Делай свой выбор</div>
+				<div class="board" id="result">
+					<img class="user" src="./assets/question.png" alt="" />
+					<img class="comp" src="./assets/question.png" alt="" />
+				</div>
+				<div class="choices">
+					<div class="choice" id="user-choice">Твой выбор</div>
+					<div class="choice" id="comp-choice">Выбор комьютера</div>
+				</div>
 			</div>
 		</div>
-
 		<script src="main.js"></script>
 	</body>
 </html>

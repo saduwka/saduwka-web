@@ -24,7 +24,7 @@
 	},
 
 	// Устанавливает тему и настраивает подсветку переменных. Например, делает их курсивом и окрашивает в другой цвет.
-	"workbench.colorTheme": "One Dark Pro",
+	"workbench.colorTheme": "GitHub Dark Default",
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [
 			{
