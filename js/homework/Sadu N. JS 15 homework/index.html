@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Random</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="heading">The Random Number Generator</div>
+			<div class="generator">
+				<div class="min-number">
+					<label for="min-value">Min: </label>
+					<input type="number" id="min-value" />
+				</div>
+				<div class="max-number">
+					<label for="max-value">Max: </label>
+					<input type="number" id="max-value" />
+				</div>
+				<button id="generate">Generate</button>
+				<div class="result-block">
+					<div class="result">
+						<h6 id="result-head">Result</h6>
+						<div class="result-value"></div>
+						<div class="input-value">
+							<div class="result-min">
+								<div class="result-min-head">Min</div>
+								<div class="result-min-value"></div>
+							</div>
+							<div class="result-max">
+								<div class="result-max-head">Max</div>
+								<div class="result-max-value"></div>
+							</div>
+                        </div>
+							<div class="generate-date"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="main.js"></script>
+	</body>
+</html>
