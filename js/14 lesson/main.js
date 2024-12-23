@@ -15,6 +15,7 @@ const cardsArr = [
 
 let firstCard = null;
 let secondCard = null;
+let canTouch = true;
 
 const boardElem = document.querySelector(".board");
 const restartBtn = document.querySelector(".restart");
@@ -22,13 +23,15 @@ const score = document.querySelector(".scores");
 let points = 0;
 
 restartBtn.addEventListener("click", () => {
+	points = 0;
+	score.textContent = 0;
 	clearBoard();
+	createBoard();
 });
 
 const clearBoard = () => {
-	const boardCards = boardElem.childNodes;
+	const boardCards = Array.from(boardElem.childNodes);
 	boardCards.forEach((card) => {
-		console.log(card);
 		boardElem.removeChild(card);
 	});
 };
@@ -48,6 +51,7 @@ const createBoard = () => {
 	shuffledCards.forEach((card) => {
 		const cardElem = document.createElement("div");
 		cardElem.classList.add("card");
+		cardElem.classList.add("card-wrapper");
 		cardElem.textContent = card.text;
 		cardElem.dataset.name = card.text;
 
@@ -57,19 +61,17 @@ const createBoard = () => {
 
 const unflipCards = () => {
 	if (firstCard && secondCard) {
-		firstCard.classList.remove("flip");
-		secondCard.classList.remove("flip");
+		canTouch = false;
+		setTimeout(() => {
+			firstCard.classList.remove("flip");
+			secondCard.classList.remove("flip");
+
+			firstCard = null;
+			secondCard = null;
+			canTouch = true;
+		}, 1000);
 	}
 };
-
-/* 
-    1) Проверка двойного клика на одну и ту же карточку
-    2) Перемещать карточки
-    3) Скрыть обложки (css)
-    4) Счетчик (+50 за верный, -50 за не правильный)
-    5) Кнопка рестарта (Либо если счет ушел в минус)
-
-*/
 
 const updateScore = (value) => {
 	points += value;
@@ -78,9 +80,19 @@ const updateScore = (value) => {
 
 const hideMatchedCards = () => {
 	if (firstCard && secondCard) {
-		firstCard.style.display = "none";
-		secondCard.style.display = "none";
+		canTouch = false;
 	}
+	setTimeout(() => {
+		firstCard.style.opacity = "0";
+		firstCard.classList.remove("card");
+		firstCard = null;
+
+		secondCard.style.opacity = "0";
+		secondCard.classList.remove("card");
+		secondCard = null;
+
+		canTouch = true;
+	}, 1000);
 };
 
 const checkCards = () => {
@@ -94,6 +106,9 @@ const checkCards = () => {
 };
 
 const flipCard = (event) => {
+	if (!canTouch) {
+		return;
+	}
 	const target = event.target;
 	const card = target.closest(".card");
 	console.log(event);
@@ -109,11 +124,10 @@ const flipCard = (event) => {
 	}
 	if (firstCard && secondCard) {
 		const match = checkCards();
+		canTouch = false;
 		match
 			? (hideMatchedCards(), updateScore(50))
 			: (unflipCards(), updateScore(-50));
-		firstCard = null;
-		secondCard = null;
 	}
 
 	console.log(points);
@@ -124,7 +138,3 @@ const flipCard = (event) => {
 
 createBoard();
 boardElem.addEventListener("click", flipCard);
-
-// = - присваивание
-// == - проверка на равенство (по значению)
-// === - проверка на равенство (по значению и по типу)

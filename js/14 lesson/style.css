@@ -14,7 +14,7 @@
 	width: 750px;
 }
 
-.card {
+.card-wrapper {
 	width: 120px;
 	height: 120px;
 	background-color: salmon;
