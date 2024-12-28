@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container">
+			<form class="weather-form">
+				<label for="city-name" class="label">Введите название города</label>
+				<input type="text" id="city-name" class="inp" />
+				<button class="btn">Получить</button>
+			</form>
+		</div>
+
+		<div class="result">
+			<img id="result-img" src="" alt="" />
+			<ul class="reuslt-list">
+				<li class="result-row">
+					<span id="city-name-output"></span>
+					<span id="temperature"></span>
+				</li>
+				<li class="result-row">
+					<span class="li-head">Ощущается:</span>
+					<span id="feels-temperature"></span>
+				</li>
+				<li class="result-row">
+					<span class="li-head">Скорость ветра:</span>
+					<span id="wind"></span>
+				</li>
+			</ul>
+		</div>
+		<script src="main.js"></script>
+	</body>
+</html>

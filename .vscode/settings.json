@@ -9,7 +9,7 @@
 	"prettier.arrowParens": "always",
 	"cSpell.language": "en,ru",
 	"editor.wordWrap": "on",
-	"prettier.trailingComma": "all",
+	// "prettier.trailingComma": "all",
 	"git.confirmSync": false,
 	"javascript.validate.enable": true,
 	"javascript.suggest.names": true,

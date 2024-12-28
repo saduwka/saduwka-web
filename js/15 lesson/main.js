@@ -8,7 +8,6 @@ const getUsers = () => {
 	})
 		.then((response) => {
 			if (response.ok) {
-				// console.log(response.json());
 				return response.json();
 			}
 			console.log(response);
