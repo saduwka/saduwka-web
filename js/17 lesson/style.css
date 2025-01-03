@@ -1,7 +1,59 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Comfortaa", serif;
+}
+
+body {
+	background-image: url("https://grizly.club/sec2/uploads/posts/2024-02/grizly-club-p-fon-svetlo-goluboe-nebo-1.jpg");
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 100px;
+	border-radius: 5px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 50px;
+	background-color: skyblue;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.result {
+	display: flex;
+	gap: 20px;
+	width: 1000px;
+	margin: 50px;
+}
+
 li {
 	list-style: none;
 }
 
-.li-head {
+.result-list {
+	border-radius: 5px;
+	padding: 20px;
+	background-color: skyblue;
 	display: none;
+	width: 500px;
+}
+
+.result-row {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 5px;
+}
+#map {
+	height: 350px;
+	width: 100%;
+	border-radius: 5px;
 }

@@ -10,7 +10,10 @@ const temperature = document.querySelector("#temperature");
 const tempFeel = document.querySelector("#feels-temperature");
 const wind = document.querySelector("#wind");
 const weatherImage = document.querySelector("#result-img");
-const liHead = document.querySelector(".li-head");
+const ulHead = document.querySelector(".result-list");
+const timeOutput = document.querySelector("#current-time");
+const humid = document.querySelector("#humid");
+let map;
 
 const getWeatherData = (city) => {
 	fetch(
@@ -20,20 +23,60 @@ const getWeatherData = (city) => {
 		.then((weatherData) => {
 			console.log(weatherData);
 			insertWeatherData(weatherData);
+			showMap(weatherData.coord.lat, weatherData.coord.lon, city);
+		})
+		.catch((error) => {
+			console.log(error);
+
+			alert("Ошибка: город не найден или сервис недоступен.");
+			cityNameOutput.textContent =
+				"Ошибка: город не найден или сервис недоступен.";
+			temperature.textContent = "";
+			tempFeel.textContent = "";
+			wind.textContent = "";
+			weatherImage.style.display = "none";
+			humid.textContent = "";
 		});
 };
 
 const insertWeatherData = (data) => {
 	cityNameOutput.textContent = `В городе ${data.name} температура:`;
-	temperature.textContent = `${data.main.temp}°C`;
-	tempFeel.textContent = `${data.main.feels_like}°C`;
+	if (data.main.temp < 0) {
+		temperature.textContent = `${Math.round(data.main.temp)}°C`;
+		temperature.style.color = "blue";
+	} else {
+		temperature.textContent = `${Math.round(data.main.temp)}°C`;
+		temperature.style.color = "red";
+	}
+	if (data.main.feels_like < 0) {
+		tempFeel.textContent = `${Math.round(data.main.feels_like)}°C`;
+		tempFeel.style.color = "blue";
+	} else {
+		tempFeel.textContent = `${Math.round(data.main.feels_like)}°C`;
+		tempFeel.style.color = "red";
+	}
 	wind.textContent = `${data.wind.speed} м/с`;
 	weatherImage.setAttribute(
 		"src",
 		`${WEATHER_ICON_URL}/${data.weather[0].icon}.png`
 	);
+	weatherImage.style.display = "block";
 	weatherImage.setAttribute("alt", `${data.weather[0].description}`);
-	liHead.style.display = "block";
+	ulHead.style.display = "block";
+	humid.textContent = `${data.main.humidity} %`;
+};
+
+const showMap = (lat, lon, city) => {
+	if (map) {
+		map.remove();
+	}
+
+	map = L.map("map").setView([lat, lon], 10);
+	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+		maxZoom: 5,
+	}).addTo(map);
+
+	L.marker([lat, lon]).addTo(map).bindPopup(`Город: ${city}`).openPopup();
 };
 
 weatherForm.addEventListener("submit", (event) => {
@@ -41,5 +84,7 @@ weatherForm.addEventListener("submit", (event) => {
 	const cityName = cityNameInp.value;
 	if (cityName) {
 		getWeatherData(cityName);
+	} else {
+		alert("Введите город");
 	}
 });
