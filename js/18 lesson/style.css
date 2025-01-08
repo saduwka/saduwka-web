@@ -28,12 +28,16 @@
 
 .categories-item {
 	cursor: pointer;
-	transition: 0.5s;
+	transition: 0.3s;
 	list-style: none;
 }
 
 .categories-item:hover {
 	transform: scale(105%);
+	background-color: #000;
+	border-radius: 5px;
+	color: #fff;
+	padding: 5px;
 }
 
 .items {
@@ -64,4 +68,26 @@
 	width: 155px;
 	height: 210px;
 	object-fit: contain;
+}
+
+.hide {
+	display: none;
+}
+
+.pagination {
+	max-width: 1440px;
+	width: 50%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+.pagination-btn {
+	margin: 50px;
+	width: 40px;
+	padding: 10px;
+	border: 1px solid #000;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
 }
