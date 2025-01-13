@@ -2,11 +2,16 @@ const SERVER_URL = "https://dummyjson.com";
 
 const PRODUCTS_LIMIT = 8;
 
+const logoImg = document.querySelector(".logo-img");
 const categoriesItem = document.querySelector(".categories");
 const itemList = document.querySelector(".items");
 const productPage = document.querySelector(".product-page");
 const cartBtn = document.querySelector(".cart-btn");
 const pagination = document.querySelector(".pagination");
+const modalBackground = document.querySelector(".modal-background");
+const modalActive = document.querySelector(".modal-active");
+const modalClose = document.querySelector(".modal-close");
+const modalWindow = document.querySelector(".modal-window");
 
 const getCategories = async () => {
 	try {
@@ -215,6 +220,36 @@ const init = async () => {
 
 	firstPageProducts(allProducts);
 };
+
+const handleBuy = async (e) => {
+	modalBackground.style.display = "block";
+	const cart = JSON.parse(localStorage.getItem("cart")) || [];
+	const products = cart.map((item) => ({
+		id: item.id,
+		quantity: item.quantity || 1,
+	}));
+
+	console.log({ products });
+};
+
+const handleBackToHome = async () => {
+	itemList.classList.remove("hide");
+	productPage.classList.add("hide");
+	productPage.innerHTML = "";
+
+	const data = await getMainPageProducts();
+	if (data && data.products) {
+		insertProductsCards(data.products);
+	} else {
+		console.warn("Failed to load products for the main page");
+	}
+};
+
+modalClose.addEventListener("click", () => {
+	modalBackground.style.display = "none";
+});
+
+logoImg.addEventListener("click", handleBackToHome);
 
 categoriesItem.addEventListener("click", handleSelectCategory);
 
