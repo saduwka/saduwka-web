@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<form class="form-register">
+			<div>
+				<label for="user-phone">Номер телефона</label>
+				<input type="phone" name="user-phone" id="user-phone" />
+			</div>
+			<div>
+				<label for="user-email">Почта</label>
+				<input type="email" name="user-email" id="user-email" />
+			</div>
+			<div>
+				<label for="user-pass">Пароль</label>
+				<input type="password" name="user-pass" id="user-pass" />
+			</div>
+			<button id="btn-register">Зарегистрироваться</button>
+		</form>
+
+		<form class="form-login">
+			<div>
+				<label for="login-email">Введите почту</label>
+				<input type="email" name="login-email" id="login-email" />
+			</div>
+			<div>
+				<label for="login-pass">Пароль</label>
+				<input type="password" name="login-pass" id="login-pass" />
+			</div>
+			<button id="btn-login">Войти</button>
+		</form>
+		<div id="alert"></div>
+		<script src="main.js"></script>
+	</body>
+</html>
