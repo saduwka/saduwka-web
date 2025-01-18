@@ -8,6 +8,7 @@ const formRegister = document.querySelector(".form-register");
 const phoneInpRegister = document.querySelector("#user-phone");
 const emailInpRegister = document.querySelector("#user-email");
 const passInpRegister = document.querySelector("#user-pass");
+const passHint = document.querySelector("#pass-hint");
 
 const formLogin = document.querySelector(".form-login");
 const emailInpLogin = document.querySelector("#login-email");
@@ -99,3 +100,68 @@ init();
 
 formLogin.addEventListener("submit", loginUser);
 formRegister.addEventListener("submit", registerUser);
+
+phoneInpRegister.addEventListener("input", (e) => {
+	let value = phoneInpRegister.value.replace(/\D/g, "");
+	let formattedValue = "+7";
+	if (value.length > 1) {
+		console.log(value.substring(1, 4)); //код телефонна (701
+		formattedValue += "(" + value.substring(1, 4);
+	}
+
+	if (value.length >= 4) {
+		formattedValue += ") " + value.substring(4, 7);
+	}
+
+	if (value.length >= 7) {
+		formattedValue += "-" + value.substring(7, 9);
+	}
+	if (value.length >= 9) {
+		formattedValue += "-" + value.substring(9, 11);
+	}
+
+	phoneInpRegister.value = formattedValue;
+});
+
+phoneInpRegister.addEventListener("blur", () => {
+	const phoneRegex = /^\+7\(\d{3}\) \d{3}-\d{2}-\d{2}/;
+
+	if (!phoneRegex.test(phoneInpRegister.value)) {
+		alert("Неверный формат");
+		phoneInpRegister.style.backgroundColor = "#ffe6e6";
+
+		setTimeout(() => {
+			phoneInpRegister.style.backgroundColor = "";
+		}, 1000);
+	}
+});
+
+passInpRegister.addEventListener("input", (e) => {
+	passHint.style.display = "block";
+	let value = passInpRegister.value;
+	const passRegex =
+		/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{5,}$/;
+	if (value.length < 5) {
+		passInpRegister.style.backgroundColor = "#ffe6e6";
+	} else if (!passRegex.test(value)) {
+		passInpRegister.style.backgroundColor = "#ffe6e6";
+	} else {
+		passInpRegister.style.backgroundColor = "";
+	}
+});
+
+passInpRegister.addEventListener("blur", () => {
+	passHint.style.display = "";
+});
+
+// i - нечувствительность к регистру
+
+// const regex = /hello/i;
+
+// const regex = /^[a-zA-Z]$/; // только латинские буквы
+// const userInput = "Hello world";
+
+// console.log(regex.test(userInput));
+
+const passRegex =
+	/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{5,}$/;

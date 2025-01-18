@@ -1,0 +1,9 @@
+#pass-hint {
+	width: fit-content;
+	padding: 10px;
+	display: none;
+	background-color: azure;
+	border-radius: 10px;
+	font-size: 14px;
+	color: darkgray;
+}
