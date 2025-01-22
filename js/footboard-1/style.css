@@ -1,0 +1,271 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+body {
+	background-color: #222;
+	color: #000;
+	font-family: "Arial", sans-serif;
+	margin: 0;
+	padding: 20px;
+	height: 100vh;
+}
+
+#home-btn {
+	display: none;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	padding: 10px 15px;
+	margin: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+}
+
+#all-competitions {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 20px;
+	margin: 100px;
+}
+
+.competition-logo-name {
+	background-color: #ffffff;
+	border-radius: 5px;
+	width: fit-content;
+}
+
+.competition-tile {
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	justify-content: flex-end;
+}
+
+.competition-tile:hover {
+	transform: scale(1.05);
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.competition-tile img {
+	max-width: 100px;
+	margin-bottom: 15px;
+}
+
+.competition-tile h3 {
+	font-size: 18px;
+	color: #333;
+	font-weight: 600;
+}
+
+.buttons {
+	margin-top: 10px;
+}
+
+.buttons button {
+	background-color: ;
+	color: #000;
+	border: none;
+	padding: 10px 15px;
+	margin: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 14px;
+	transition: background-color 0.5s ease-out;
+}
+
+.buttons button:hover {
+	background-color: #0056b3;
+	color: #fff;
+}
+
+.match {
+	background-color: #fff;
+	border-radius: 8px;
+	padding: 15px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+}
+
+.match img {
+	max-width: 50px;
+}
+
+.match div {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.match p {
+	font-size: 14px;
+	margin: 5px 0;
+	color: #666;
+}
+
+.competition-logo-name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.competition-logo-name img {
+	max-width: 40px;
+	margin-right: 10px;
+}
+
+#logo-standing {
+	width: 50px;
+	height: 50px;
+}
+
+#standing-head {
+	gap: 10px;
+}
+
+/* Модальное окно */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #fff;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 600px;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	gap: 20px;
+}
+
+.close-btn {
+	color: #aaa;
+	font-size: 28px;
+	font-weight: bold;
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* Основной стиль для таблицы */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: #2d2d2d; /* Темный фон */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для создания глубины */
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Стиль для заголовка таблицы */
+thead {
+	background-color: #444; /* Сделаем фон темнее, чтобы выделялся */
+	color: #fff;
+	font-weight: bold;
+}
+
+thead th {
+	padding: 12px 15px;
+	text-align: left;
+	font-size: 16px; /* Увеличим размер шрифта для заголовка */
+}
+
+/* Стиль для строк таблицы */
+tbody tr:nth-child(odd) {
+	background-color: #444; /* Тёмно-серый для нечётных строк */
+	transition: background-color 0.3s ease; /* Плавный переход */
+}
+
+tbody tr:nth-child(even) {
+	background-color: #555; /* Средне-серый для чётных строк */
+	transition: background-color 0.3s ease; /* Плавный переход */
+}
+
+/* Стиль для всех строк в tbody */
+tbody tr:hover {
+	background-color: #777; /* Светло-серый при наведении */
+	cursor: pointer; /* Курсор при наведении */
+}
+
+/* Стиль для ячеек таблицы */
+tbody td {
+	padding: 10px 15px;
+	color: #ddd; /* Светлый текст для контраста */
+	font-size: 14px;
+	border-bottom: 1px solid #333; /* Разделение строк */
+}
+
+/* Стиль для ячеек с иконками или логотипами */
+tbody td img {
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
+
+/* Стиль для первой колонки (например, место) */
+tbody td:first-child {
+	font-weight: bold;
+	color: #f39c12; /* Оранжевый цвет для выделения */
+}
+
+/* Стиль для пустых ячеек */
+tbody td.empty {
+	background-color: #555;
+	color: transparent;
+}
+
+@media (max-width: 768px) {
+	#all-competitions {
+		grid-template-columns: 1fr;
+	}
+
+	.competition-tile {
+		padding: 15px;
+	}
+
+	.buttons button {
+		padding: 8px 12px;
+		font-size: 12px;
+	}
+
+	.match p {
+		font-size: 12px;
+	}
+}
