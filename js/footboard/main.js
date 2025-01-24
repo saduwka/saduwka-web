@@ -79,7 +79,7 @@ const getCompetitions = async () => {
 	}
 };
 
-let currentCompetitionCode = null; // Добавим переменную для хранения текущего турнира
+let currentCompetitionCode = null;
 
 const showModal = (competition) => {
 	// Сброс флагов
@@ -96,22 +96,18 @@ const showModal = (competition) => {
 	const standingsBtn = document.getElementById("standings-btn");
 	const scorersBtn = document.getElementById("scorers-btn");
 
-	// Очищаем старые обработчики
 	matchesBtn.removeEventListener("click", showMatches);
 	standingsBtn.removeEventListener("click", showStandings);
 	scorersBtn.removeEventListener("click", showScorers);
 
-	// Добавляем новые обработчики
 	matchesBtn.addEventListener("click", showMatches);
 	standingsBtn.addEventListener("click", showStandings);
 	scorersBtn.addEventListener("click", showScorers);
 
-	// Очищаем экран перед загрузкой данных
 	board.innerHTML = "";
 
 	async function showMatches() {
-		// Для каждого раздела перед запросом очищаем экран
-		if (currentCompetitionCode !== competition.code) return; // Если выбран другой турнир, не выполняем запрос
+		if (currentCompetitionCode !== competition.code) return;
 
 		const { matches } = await getMatchesByCompetition(competition.code);
 		displayMatches(matches, competition);
@@ -119,7 +115,7 @@ const showModal = (competition) => {
 	}
 
 	async function showStandings() {
-		if (currentCompetitionCode !== competition.code) return; // Проверка на изменения турнира
+		if (currentCompetitionCode !== competition.code) return;
 
 		const standings = await getStandingsByCompetition(competition.code);
 		displayStandings(standings, competition);
@@ -127,14 +123,14 @@ const showModal = (competition) => {
 	}
 
 	async function showScorers() {
-		if (currentCompetitionCode !== competition.code) return; // Проверка на изменения турнира
+		if (currentCompetitionCode !== competition.code) return;
 
 		const scorers = await getScorersByCompetition(competition.code);
 		displayScorers(scorers);
 		modal.style.display = "none";
 	}
 
-	modal.style.display = "block"; // Открываем модальное окно
+	modal.style.display = "block";
 };
 
 closeBtn.addEventListener("click", () => {
@@ -167,7 +163,7 @@ const displayCompetitions = (competitionsData) => {
 		!competitionsData.competitions ||
 		competitionsData.competitions.length === 0
 	) {
-		board.innerHTML = "<p>Нет доступных турниров.</p>";
+		board.innerHTML = "<p>No tournaments available.</p>";
 		return;
 	}
 
@@ -216,13 +212,13 @@ const displayMatches = (matches, competition) => {
 		.map(
 			(match) => `
       <div class="match">
-        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+        <div class="match-header">
           <img id="logoHomeTeam" src="${match.homeTeam.crest || ""}" alt="${
 				match.homeTeam.name
 			} logo" />
-          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div class="match-info">
             <strong>${match.homeTeam.name}</strong>
-            <span style="margin: 5px 0; font-size: 18px; font-weight: bold;">
+            <span>
               ${
 								match.score.fullTime.home !== null &&
 								match.score.fullTime.away !== null
@@ -254,42 +250,52 @@ const displayStandings = (standings, competition) => {
 	board.innerHTML = `
 
     <div class="competition-logo-name">
-      <img alt="${competition.code}" src="${competition.emblem}" />
-      <h2>${competition.name}</h2>
+		<img alt="${competition.code}" src="${competition.emblem}" />
+		<h2>${competition.name}</h2>
     </div>
-    <table>
-      <thead>
-        <tr id="standing-head">
-          <th>Место</th>
-		  <th></th>
-          <th>Команда</th>
-          <th>Игры</th>
-          <th>Победы</th>
-          <th>Ничьи</th>
-          <th>Поражения</th>
-          <th>Очки</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${standings[0].table
-					.map(
-						(team) => `
-            <tr>
-              <td>${team.position}</td>
-			  <td><img id="logo-standing" src="${team.team.crest}" alt="${team.team.tla}"></td>
-              <td>${team.team.name}</td>
-              <td>${team.playedGames}</td>
-              <td>${team.won}</td>
-              <td>${team.draw}</td>
-              <td>${team.lost}</td>
-              <td>${team.points}</td>
-            </tr>
-          `,
-					)
-					.join("")}
-      </tbody>
-    </table>
+	<table>
+		<thead>
+			<tr id="standing-head">
+				<th>Position</th>
+				<th></th>
+				<th>Team</th>
+				<th>Games</th>
+				<th>Win</th>
+				<th>Draw</th>
+				<th>Defeat</th>
+				<th>Points</th>
+			</tr>
+		</thead>
+		<tbody>
+			${standings[0].table
+				.map(
+					(team) => `
+				<tr class="team-row" data-team-id="${team.team.id}">
+					<td>${team.position}</td>
+					<td><img id="logo-standing" src="${team.team.crest}" alt="${team.team.tla}"></td>
+					<td>${team.team.name}</td>
+					<td>${team.playedGames}</td>
+					<td>${team.won}</td>
+					<td>${team.draw}</td>
+					<td>${team.lost}</td>
+					<td>${team.points}</td>
+				</tr>
+				`,
+				)
+				.join("")}
+		</tbody>
+	</table>
   `;
+	document.querySelectorAll(".team-row").forEach((row) => {
+		row.addEventListener("click", async () => {
+			const teamId = row.getAttribute("data-team-id");
+			if (teamId) {
+				await displayTeamInfo(teamId);
+			} else {
+				console.error("No team ID found for this row.");
+			}
+		});
+	});
 };
 
 const displayScorers = (scorers) => {
@@ -304,13 +310,13 @@ const displayScorers = (scorers) => {
 	<table>
 		<thead>
 			<tr>
-				<th>Место</th>
-				<th>Игрок</th>
-				<th>Команда</th>
-				<th>Голов</th>
-				<th>Ассистов</th>
-				<th>Пенальти</th>
-				<th>Сыграно матчей</th>
+				<th>Position</th>
+				<th>Player</th>
+				<th>Team</th>
+				<th>Goals</th>
+				<th>Assists</th>
+				<th>Penalties</th>
+				<th>Matches played</th>
 			</tr>
 		</thead>
 		<body>
@@ -336,9 +342,78 @@ const displayScorers = (scorers) => {
 	</table>`;
 };
 
+const displayTeamInfo = async (teamId) => {
+	try {
+		const res = await fetch(`${SERVER_URL}teams/${teamId}`, {
+			headers: {
+				"X-Auth-Token": "b84f86b2893b46379c3da0f78c6833b9",
+			},
+		});
+		const team = await res.json();
+		console.log(team);
+
+		board.innerHTML = `
+		<div class="team-info">
+			<h2>${team.name}</h2>
+			<img src="${team.crest}" alt="${team.name} logo" />
+			<p>Founded: ${team.founded || "N/A"}</p>
+			<p>Stadium: ${team.venue || "N/A"}</p>
+			<p>Address: ${team.address || "N/A"}</p>
+			<p>Website: <a href="${team.website}" target="_blank">${team.website}</a></p>
+			<p>Coach: ${
+				team.coach && team.coach.name
+					? `${team.coach.name} (${team.coach.nationality})`
+					: "N/A"
+			}</p>
+			<p><b>Squad:</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Role</th>
+						<th>Player</th>
+						<th>Nationality</th>
+					</tr>
+				</thead>
+				<tbody>
+					${team.squad
+						.map(
+							(player) => `
+							<tr>
+								<td>${player.position || "N/A"}</td>
+								<td>${player.name}</td>
+								<td>${player.nationality || "N/A"}</td>
+							</tr>`,
+						)
+						.join("")}
+				</tbody>
+			</table>
+		</div>
+		`;
+
+		homeBtn.style.display = "block";
+		competitionLogo.innerHTML = "";
+	} catch (error) {
+		console.error("Failed to fetch team information:", error);
+		board.innerHTML =
+			"<p>Failed to load team information. Please try again later.</p>";
+	}
+};
+
+const columns = 4;
+
 document.addEventListener("DOMContentLoaded", async () => {
 	const object = await getCompetitions();
 	displayCompetitions(object);
+	const tiles = document.querySelectorAll(".competition-tile");
+	const totalTiles = tiles.length;
+	const remainder = totalTiles % columns;
+
+	if (remainder > 0) {
+		const tilesToRemove = remainder;
+		for (let i = 0; i < tilesToRemove; i++) {
+			tiles[totalTiles - 1 - i].remove();
+		}
+	}
 });
 
 homeBtn.addEventListener("click", async () => {
@@ -347,4 +422,14 @@ homeBtn.addEventListener("click", async () => {
 	homeBtn.style.display = "none";
 	const object = await getCompetitions();
 	displayCompetitions(object);
+	const tiles = document.querySelectorAll(".competition-tile");
+	const totalTiles = tiles.length;
+	const remainder = totalTiles % columns;
+
+	if (remainder > 0) {
+		const tilesToRemove = remainder;
+		for (let i = 0; i < tilesToRemove; i++) {
+			tiles[totalTiles - 1 - i].remove();
+		}
+	}
 });
