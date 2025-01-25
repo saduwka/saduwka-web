@@ -20,12 +20,15 @@ body {
 	flex-wrap: wrap;
 	margin: 0 20px;
 	justify-content: center;
-	align-items: center;
-	gap: 30px;
+}
+
+#home-page {
+	display: flex;
+	justify-content: center;
 }
 
 #home-btn {
-	display: none;
+	display: block;
 	background-color: #fff;
 	color: #000;
 	border: 2px solid #000;
@@ -53,8 +56,13 @@ body {
 
 #all-competitions {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr); /* Фиксированное количество колонок */
+	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
+}
+
+#competition-logo {
+	display: flex;
+	justify-content: center;
 }
 
 .competition-logo-name {
@@ -115,14 +123,43 @@ body {
 	color: #fff;
 }
 
+#match-search {
+	display: none;
+}
+
+.match-group {
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	margin: 0 5px;
+}
+
+.match-status {
+	color: #fff;
+}
+.match-group {
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	margin: 0 5px;
+}
+
+.match-status {
+	color: #fff;
+	text-align: center;
+}
+
 .match {
+	text-align: center;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid #ddd;
-	padding: 10px;
+	padding: 15px;
 	margin-bottom: 15px;
 	border-radius: 8px;
 	background-color: #f9f9f9;
+	width: 100%;
+	justify-content: space-between;
 }
 
 .match > div {
@@ -133,20 +170,43 @@ body {
 }
 
 .match img {
-	width: 50px;
-	height: 50px;
+	width: 40px; /* Уменьшено, чтобы лучше вписываться */
+	height: 40px;
 	object-fit: contain;
 }
 
 .match strong {
 	font-size: 16px;
 	text-align: center;
+	flex-grow: 1; /* Это позволяет тексту занять доступное пространство */
 }
 
 .match span {
 	margin: 5px 0;
 	font-size: 18px;
 	font-weight: bold;
+	text-align: center;
+}
+
+.match-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.match-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.match-footer {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	font-size: 14px;
+	color: #555;
 }
 
 .competition-logo-name {
@@ -205,29 +265,29 @@ body {
 }
 
 #modal-buttons button {
-	background-color: #000; /* Темно-синий фон кнопки */
-	color: #fff; /* Белый текст */
-	border: none; /* Без рамки */
-	padding: 12px 20px; /* Просторное заполнение */
+	background-color: #000;
+	color: #fff;
+	border: none;
+	padding: 12px 20px;
 	margin: 5px;
-	cursor: pointer; /* Курсор указателя */
-	border-radius: 5px; /* Скругленные углы */
+	cursor: pointer;
+	border-radius: 5px;
 	font-size: 14px;
-	font-weight: bold; /* Более жирный текст */
-	transition: background-color 0.3s ease, transform 0.2s ease; /* Плавный переход для эффектов */
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+	font-weight: bold;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #modal-buttons button:hover {
-	background-color: #000; /* Чуть темнее при наведении */
-	transform: scale(1.05); /* Легкое увеличение при наведении */
-	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Увеличенная тень */
+	background-color: #000;
+	transform: scale(1.05);
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 #modal-buttons button:active {
-	background-color: #333; /* Темный синий при нажатии */
-	transform: scale(0.95); /* Легкое уменьшение при нажатии */
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшенная тень */
+	background-color: #333;
+	transform: scale(0.95);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .close-btn {

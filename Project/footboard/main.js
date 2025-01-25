@@ -1,4 +1,5 @@
 const SERVER_URL = "https://api.football-data.org/v4/";
+const TOKEN = "b84f86b2893b46379c3da0f78c6833b9";
 
 const board = document.querySelector("#board");
 const competitionLogo = document.querySelector("#competition-logo");
@@ -7,13 +8,15 @@ const homeBtn = document.querySelector("#home-btn");
 const modal = document.getElementById("modal");
 const closeBtn = document.getElementById("close-btn");
 
+const matchSearchInput = document.getElementById("match-search");
+
 const getMatchesByCompetition = async (competitionCode) => {
 	try {
 		const res = await fetch(
 			`${SERVER_URL}competitions/${competitionCode}/matches`,
 			{
 				headers: {
-					"X-Auth-Token": "b84f86b2893b46379c3da0f78c6833b9",
+					"X-Auth-Token": TOKEN,
 				},
 			},
 		);
@@ -34,7 +37,7 @@ const getStandingsByCompetition = async (competitionCode) => {
 			`${SERVER_URL}competitions/${competitionCode}/standings`,
 			{
 				headers: {
-					"X-Auth-Token": "b84f86b2893b46379c3da0f78c6833b9",
+					"X-Auth-Token": TOKEN,
 				},
 			},
 		);
@@ -52,7 +55,7 @@ const getScorersByCompetition = async (competitionCode) => {
 			`${SERVER_URL}competitions/${competitionCode}/scorers`,
 			{
 				headers: {
-					"X-Auth-Token": "b84f86b2893b46379c3da0f78c6833b9",
+					"X-Auth-Token": TOKEN,
 				},
 			},
 		);
@@ -68,7 +71,7 @@ const getCompetitions = async () => {
 	try {
 		const res = await fetch(`${SERVER_URL}competitions`, {
 			headers: {
-				"X-Auth-Token": "b84f86b2893b46379c3da0f78c6833b9",
+				"X-Auth-Token": TOKEN,
 			},
 		});
 		const data = await res.json();
@@ -82,10 +85,8 @@ const getCompetitions = async () => {
 let currentCompetitionCode = null;
 
 const showModal = (competition) => {
-	// Сброс флагов
 	currentCompetitionCode = competition.code;
 
-	// Открытие модального окна с данными турнира
 	const competitionName = document.getElementById("modal-competition-name");
 	const competitionLogo = document.getElementById("modal-competition-logo");
 
@@ -105,6 +106,7 @@ const showModal = (competition) => {
 	scorersBtn.addEventListener("click", showScorers);
 
 	board.innerHTML = "";
+	homeBtn.style.display = "block";
 
 	async function showMatches() {
 		if (currentCompetitionCode !== competition.code) return;
@@ -135,7 +137,6 @@ const showModal = (competition) => {
 
 closeBtn.addEventListener("click", () => {
 	modal.style.display = "none";
-	homeBtn.style.display = "none";
 	competitionLogo.innerHTML = "";
 
 	loadCompetitions();
@@ -150,7 +151,6 @@ window.addEventListener("click", (event) => {
 	if (event.target === modal) {
 		modal.style.display = "none";
 
-		homeBtn.style.display = "none";
 		competitionLogo.innerHTML = "";
 
 		loadCompetitions();
@@ -197,46 +197,92 @@ const displayCompetitions = (competitionsData) => {
 
 const displayMatches = (matches, competition) => {
 	homeBtn.style.display = "block";
+	matchSearchInput.style.display = "block";
 
 	if (!Array.isArray(matches) || matches.length === 0) {
 		board.innerHTML = "<p>No matches available or an error occurred.</p>";
 		return;
 	}
 
+	allMatches = matches;
+
 	competitionLogo.innerHTML = `<div class="competition-logo-name">
-      <img alt="${competition.code}" src="${competition.emblem}" />
-      <h2>${competition.name}</h2>
+      <img alt="${competition.code}" src="${
+		competition.emblem || "default-logo.png"
+	}" />
+      <h2>${competition.name || "Unknown Competition"}</h2>
     </div>`;
 
-	board.innerHTML = matches
-		.map(
-			(match) => `
-      <div class="match">
-        <div class="match-header">
-          <img id="logoHomeTeam" src="${match.homeTeam.crest || ""}" alt="${
-				match.homeTeam.name
-			} logo" />
-          <div class="match-info">
-            <strong>${match.homeTeam.name}</strong>
-            <span>
-              ${
-								match.score.fullTime.home !== null &&
-								match.score.fullTime.away !== null
-									? `${match.score.fullTime.home} : ${match.score.fullTime.away}`
-									: "VS"
-							}
-            </span>
-            <strong>${match.awayTeam.name}</strong>
-          </div>
-          <img id="logoAwayTeam" src="${match.awayTeam.crest || ""}" alt="${
-				match.awayTeam.name
-			} logo" />
-        </div>
-        <p>Date: ${new Date(match.utcDate).toLocaleString()}</p>
-        <p>Status: ${match.status}</p>
-      </div>`,
-		)
+	matches.reverse();
+
+	const groupedMatches = matches.reduce((acc, match) => {
+		const status = match.status || "Unknown";
+		if (!acc[status]) {
+			acc[status] = [];
+		}
+		acc[status].push(match);
+		return acc;
+	}, {});
+
+	board.innerHTML = Object.keys(groupedMatches)
+		.map((status) => {
+			const groupMatches = groupedMatches[status];
+			return `
+				<div class="match-group">
+					<h3 class="match-status">${status}</h3>
+					${groupMatches
+						.map(
+							(match) => `
+								<div class="match">
+									<div class="match-header">
+										<img id="logoHomeTeam" src="${
+											match.homeTeam.crest || "default-logo.png"
+										}" alt="${match.homeTeam.name}" />
+										<div class="match-info">
+											<strong>${match.homeTeam.name}</strong>
+											<span>
+												${
+													match.score.fullTime.home !== null &&
+													match.score.fullTime.away !== null
+														? `${match.score.fullTime.home} : ${match.score.fullTime.away}`
+														: "VS"
+												}
+											</span>
+											<strong>${match.awayTeam.name}</strong>
+										</div>
+										<img id="logoAwayTeam" src="${
+											match.awayTeam.crest || "default-logo.png"
+										}" alt="${match.awayTeam.name}" />
+									</div>
+									<p>Date: ${new Date(match.utcDate).toLocaleString()}</p>
+									<p>Status: ${match.status}</p>
+								</div>`,
+						)
+						.join("")}
+				</div>
+			`;
+		})
 		.join("");
+};
+
+const filterMatches = () => {
+	const query = matchSearchInput.value.toLowerCase();
+
+	// Фильтруем матчи, чтобы они соответствовали поисковому запросу
+	const filteredMatches = allMatches.filter((match) => {
+		const homeTeamName = match.homeTeam.name.toLowerCase();
+		const awayTeamName = match.awayTeam.name.toLowerCase();
+		const matchStatus = match.status.toLowerCase();
+
+		// Возвращаем только те матчи, где хотя бы одна команда или статус соответствует запросу
+		return (
+			homeTeamName.includes(query) ||
+			awayTeamName.includes(query) ||
+			matchStatus.includes(query)
+		);
+	});
+
+	displayMatches(filteredMatches, { name: "Filtered Matches", emblem: "" });
 };
 
 const displayStandings = (standings, competition) => {
@@ -346,7 +392,7 @@ const displayTeamInfo = async (teamId) => {
 	try {
 		const res = await fetch(`${SERVER_URL}teams/${teamId}`, {
 			headers: {
-				"X-Auth-Token": "b84f86b2893b46379c3da0f78c6833b9",
+				"X-Auth-Token": TOKEN,
 			},
 		});
 		const team = await res.json();
@@ -419,7 +465,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 homeBtn.addEventListener("click", async () => {
 	modal.style.display = "none";
 	competitionLogo.innerHTML = "";
-	homeBtn.style.display = "none";
+	matchSearchInput.style.display = "none";
 	const object = await getCompetitions();
 	displayCompetitions(object);
 	const tiles = document.querySelectorAll(".competition-tile");
@@ -433,3 +479,31 @@ homeBtn.addEventListener("click", async () => {
 		}
 	}
 });
+
+matchSearchInput.addEventListener("input", (event) => {
+	const query = event.target.value.toLowerCase();
+
+	if (query === "") {
+		console.log(123);
+
+		displayMatches(allMatches);
+	} else {
+		const filteredMatches = allMatches.filter((match) => {
+			const homeTeamName = match.homeTeam.name.toLowerCase();
+			const awayTeamName = match.awayTeam.name.toLowerCase();
+			const matchStatus = match.status.toLowerCase();
+
+			return (
+				homeTeamName.includes(query) ||
+				awayTeamName.includes(query) ||
+				matchStatus.includes(query)
+			);
+		});
+
+		displayMatches(filteredMatches, {
+			name: "Отфильтрованные матчи",
+			emblem: "",
+		});
+	}
+});
+let allMatches = [];
