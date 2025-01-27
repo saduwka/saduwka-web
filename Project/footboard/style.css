@@ -428,6 +428,29 @@ tbody td.empty {
 	color: #333;
 	font-weight: bold;
 }
+/* Основные стили для контейнера с матчами */
+.matches-container {
+	margin-bottom: 60px; /* Оставляем место для кнопки внизу */
+}
+
+/* Стили для кнопки */
+.load-more-btn {
+	position: fixed; /* Фиксируем кнопку */
+	bottom: 10px; /* Расстояние от нижней границы экрана */
+	left: 50%; /* Выравнивание по горизонтали */
+	transform: translateX(-50%); /* Центрируем кнопку относительно экрана */
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.load-more-btn:hover {
+	background-color: #0056b3;
+}
 
 @media (max-width: 768px) {
 	#all-competitions {
