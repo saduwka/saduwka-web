@@ -28,6 +28,7 @@ body {
 }
 
 #home-btn {
+	width: 200px;
 	display: block;
 	background-color: #fff;
 	color: #000;
@@ -55,6 +56,7 @@ body {
 }
 
 #all-competitions {
+	margin: 50px;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
@@ -136,16 +138,6 @@ body {
 
 .match-status {
 	color: #fff;
-}
-.match-group {
-	width: 30%;
-	display: flex;
-	flex-direction: column;
-	margin: 0 5px;
-}
-
-.match-status {
-	color: #fff;
 	text-align: center;
 }
 
@@ -170,7 +162,7 @@ body {
 }
 
 .match img {
-	width: 40px; /* Уменьшено, чтобы лучше вписываться */
+	width: 40px;
 	height: 40px;
 	object-fit: contain;
 }
@@ -178,7 +170,7 @@ body {
 .match strong {
 	font-size: 16px;
 	text-align: center;
-	flex-grow: 1; /* Это позволяет тексту занять доступное пространство */
+	flex-grow: 1;
 }
 
 .match span {
@@ -430,15 +422,14 @@ tbody td.empty {
 }
 /* Основные стили для контейнера с матчами */
 .matches-container {
-	margin-bottom: 60px; /* Оставляем место для кнопки внизу */
+	margin-bottom: 60px;
 }
 
-/* Стили для кнопки */
 .load-more-btn {
-	position: fixed; /* Фиксируем кнопку */
-	bottom: 10px; /* Расстояние от нижней границы экрана */
-	left: 50%; /* Выравнивание по горизонтали */
-	transform: translateX(-50%); /* Центрируем кнопку относительно экрана */
+	position: fixed;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
 	padding: 10px 20px;
 	font-size: 16px;
 	background-color: #007bff;
@@ -450,6 +441,22 @@ tbody td.empty {
 
 .load-more-btn:hover {
 	background-color: #0056b3;
+}
+
+.filter-container {
+	margin-bottom: 20px;
+}
+
+#team-filter {
+	padding: 5px;
+	font-size: 16px;
+	margin: 10px 0;
+}
+
+#no-tournament {
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 5px;
 }
 
 @media (max-width: 768px) {
