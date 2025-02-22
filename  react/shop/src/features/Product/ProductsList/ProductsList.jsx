@@ -15,8 +15,8 @@ const ProductsList = () => {
 	useEffect(() => {
 		setIsLoading(true);
 		const url = category
-			? `https://thingproxy.freeboard.io/fetch/https://dummyjson.com/products/category/${category}`
-			: "https://thingproxy.freeboard.io/fetch/https://dummyjson.com/products";
+			? `https://dummyjson.com/products/category/${category}`
+			: 'https://dummyjson.com/products';
 		
 		axios
 			.get(url)
@@ -26,7 +26,7 @@ const ProductsList = () => {
 				}
 			})
 			.catch((error) => {
-				console.error("Ошибка загрузки товаров:", error);
+				console.error("Error loading products:", error);
 				setProducts([]);
 			})
 			.finally(() => {
@@ -35,20 +35,19 @@ const ProductsList = () => {
 	}, [category]);
 
 	if (isLoading) {
-		return <p>Загрузка товаров...</p>;
+		return <p>Loading products...</p>;
 	}
 
 	if (!products.length) {
-		return <p>Товары не найдены</p>;
+		return <p>No products found</p>;
 	}
 
-	
 	const startIndex = (page - 1) * itemsPerPage;
 	const paginatedProducts = products.slice(startIndex, startIndex + itemsPerPage);
 
 	return (
 		<div className={styles.wrapper}>
-			<h2>Выбрана категория: {category || "Не выбрана"}</h2>
+			<h2>Selected category: {category || "Not selected"}</h2>
 
 			<div className={styles.cardsWrapper}>
 				{paginatedProducts.map((product) => (
