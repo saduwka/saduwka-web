@@ -1,6 +1,4 @@
 {
-
-
 	"[javascriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.tabSize": 4,
@@ -12,7 +10,6 @@
 		"editor.insertSpaces": false
 	},
 	"editor.detectIndentation": false,
-
 
 	"editor.formatOnSave": true,
 	"editor.formatOnPaste": true,
@@ -53,5 +50,13 @@
 				}
 			}
 		]
-	}
+	},
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 1000,
+	"eslint.enable": true,
+	"eslint.run": "onSave",
+	"editor.minimap.enabled": true,
+	"editor.renderWhitespace": "all",
+	"git.enableSmartCommit": true,
+	"git.autofetch": true
 }

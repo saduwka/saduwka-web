@@ -7,11 +7,13 @@ const Button = ({
     size = "medium",
     children,
     className,
+    onClick
 }) => {
     return (
         <ButtonMUI
             variant={variant}
             size={size}
+            onClick={onClick}
             className={cn(styles.btn, className)}
         >
             {children}

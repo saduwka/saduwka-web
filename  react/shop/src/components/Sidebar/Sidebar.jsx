@@ -31,7 +31,7 @@ const Sidebar = () => {
                     <li key={index}>
                         <NavLink 
                             to={`/category/${category.slug}`} 
-                            activeClassName={styles.active}
+                            className={styles.active}
                         >
                             {category.name}
                         </NavLink>
