@@ -12,17 +12,21 @@ const ProductsList = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [page, setPage] = useState(1);
 	const itemsPerPage = 8;
-	const [searchParams, setSearchParams] = useSearchParams();
-
+	const [searchParams] = useSearchParams();
 	const search = searchParams.get("search") || "";
-
 
 	useEffect(() => {
 		setIsLoading(true);
-		const url = category
-			? `https://dummyjson.com/products/category/${category}`
-			: 'https://dummyjson.com/products';
-		
+
+		let url;
+		if (search) {
+			url = `https://dummyjson.com/products/search?q=${search}`;
+		} else if (category) {
+			url = `https://dummyjson.com/products/category/${category}`;
+		} else {
+			url = "https://dummyjson.com/products";
+		}
+
 		axios
 			.get(url)
 			.then((response) => {
@@ -37,7 +41,7 @@ const ProductsList = () => {
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [category]);
+	}, [category, search]);
 
 	if (isLoading) {
 		return <p>Loading products...</p>;
@@ -47,20 +51,15 @@ const ProductsList = () => {
 		return <p>No products found</p>;
 	}
 
-	const filteredProducts = search
-		? products.filter((product) =>
-				product.title.toLowerCase().includes(search.toLowerCase())
-		  )
-		: products;
-
-		const handlePageChange = (_, value) => {
-			setPage(value);
-			setSearchParams({ ...Object.fromEntries(searchParams.entries()), page: value });
-		};
-	
+	const handlePageChange = (_, value) => {
+		setPage(value);
+	};
 
 	const startIndex = (page - 1) * itemsPerPage;
-	const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+	const paginatedProducts = products.slice(
+		startIndex,
+		startIndex + itemsPerPage,
+	);
 
 	return (
 		<div className={styles.wrapper}>
@@ -72,7 +71,7 @@ const ProductsList = () => {
 				{paginatedProducts.map((product) => (
 					<ProductCard
 						key={product.id}
-						id={product.id}
+						id={product.id} 
 						cardImage={product.thumbnail}
 						title={product.title}
 						description={product.description}
@@ -81,7 +80,8 @@ const ProductsList = () => {
 				))}
 			</div>
 
-			<Pagination variant="outlined" 
+			<Pagination
+				variant="outlined"
 				count={Math.ceil(products.length / itemsPerPage)}
 				page={page}
 				onChange={handlePageChange}

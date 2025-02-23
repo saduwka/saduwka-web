@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
+import { CART } from "../../constants/constants";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const storedCart = JSON.parse(localStorage.getItem(CART)) || [];
     setCartItems(storedCart);
   }, []);
 
-  const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
 
   const handleBuy = async () => {
     try {
@@ -43,6 +44,8 @@ const Cart = () => {
     }
   };
 
+  console.log("Cart Items:", cartItems);
+
   return (
     <div>
       <h2>Cart</h2>
@@ -57,7 +60,7 @@ const Cart = () => {
               <p>Price {item.price} x {item.quantity} = {item.price * item.quantity}$</p>
             </div>
           ))}
-          <h3>Total: {totalPrice}₸</h3>
+          <h3>Total: {totalPrice}$</h3>
           <Button onClick={handleBuy}>Buy</Button>
         </div>
       )}

@@ -1,35 +1,43 @@
 import { useEffect, useState } from "react";
-import styles from "./Search.module.css";
 import { useSearchParams } from "react-router-dom";
+import styles from "./Search.module.css";
 
 const Search = () => {
-    
     const [searchParams, setSearchParams] = useSearchParams();
-	const [search, setSearch] = useState(searchParams.get("search") || "");
+    const search = searchParams.get("search") || "";
+    const [inputValue, setInputValue] = useState(search);
 
+    useEffect(() => {
+        setInputValue(search);
+    }, [search]);
 
-	useEffect(() => {
-		if (search) {
-			setSearchParams({ search: search });
-		} else {
-            setSearchParams({});
-        }
+    const handleSearchChange = (e) => {
+        const value = e.target.value;
+        setInputValue(value);
 
+        // Обновляем параметры URL при каждом изменении
+        setSearchParams((prevParams) => {
+            const newParams = new URLSearchParams(prevParams);
+            if (value) {
+                newParams.set("search", value);
+            } else {
+                newParams.delete("search");
+            }
+            return newParams;
+        });
+    };
 
-	}, [search, setSearchParams]);
-
-	return (
-			<div className={styles.wrapper__search}>
-				<input
-					type="search"
-					placeholder="search"
-					className={styles.search}
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-				/>
-			</div>
-	
-	);
+    return (
+        <div className={styles.wrapper__search}>
+            <input
+                type="search"
+                placeholder="Search"
+                className={styles.search}
+                value={inputValue}
+                onChange={handleSearchChange}
+            />
+        </div>
+    );
 };
 
 export default Search;
