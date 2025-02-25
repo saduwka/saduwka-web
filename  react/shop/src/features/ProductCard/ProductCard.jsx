@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import ProductCardUI from "../../components/ui/ProductCard/ProductCardUI";
-import { CART } from "../../constants/constants";
+// import { CART } from "../../constants/constants";
+import { userCart } from "../../contexts/CartContext/CartContext";
 
 const ProductCard = ({
 	id,
@@ -7,34 +9,19 @@ const ProductCard = ({
 	title,
 	description,
 	price,
-	thumbnail
-}) => {
-	const getCart = () => {
-		const cart = localStorage.getItem(CART);
-		return cart ? JSON.parse(cart) : [];
-	};
 
-	const handleAddToCard = () => {
-        const cart = getCart();
-        
-        const product = {
-            id,
-            title,
-            price,
-            thumbnail, 
-            quantity: 1,
-        };
-    
-        const foundedItem = cart.find((item) => item.id === product.id);
-    
-        if (foundedItem) {
-            foundedItem.quantity += 1;
-        } else {
-            cart.push(product);
-        }
-    
-        localStorage.setItem(CART, JSON.stringify(cart));
-    };
+}) => {
+
+	const {cart, addToCart} = userCart()
+
+	const navigate = useNavigate()
+
+	console.log(cart);
+
+	const handleCardClick = () => {
+		navigate(`/product/${id}`)
+	}
+	
 
 	return (
 		<ProductCardUI
@@ -42,7 +29,8 @@ const ProductCard = ({
 			title={title}
 			description={description}
 			price={price}
-			handleAddToCard={handleAddToCard}
+			handleAddToCard={() => addToCart({id, price, title})}
+			onClick={handleCardClick}
 		/>
 	);
 };

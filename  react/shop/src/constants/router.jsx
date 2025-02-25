@@ -5,6 +5,7 @@ import Cart from "../pages/Cart/Cart";
 import Product from "../pages/Product/Product";
 import { pageRoutes } from "./pageRoutes";
 
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -26,6 +27,8 @@ const router = createBrowserRouter([
                 path: pageRoutes.productRoutes.product,
                 element: <Product />,
             },
+            
+            
         ]
     }   
 ]);

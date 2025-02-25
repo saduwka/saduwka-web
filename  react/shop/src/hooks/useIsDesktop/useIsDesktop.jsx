@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-const useIsDesktop = () => {
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+const useIsDesktop = (breakpoint = 768) => {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= breakpoint);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsDesktop(window.innerWidth >= 1024);
-        };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= breakpoint);
+    };
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint]);
 
-    return isDesktop;
+  return isDesktop;
 };
 
 export default useIsDesktop;

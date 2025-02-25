@@ -7,10 +7,11 @@ const ProductCardUI = ({
     title,
     description,
     price,
-    handleAddToCard
+    handleAddToCard,
+    onClick
 }) => { 
 return (
-    <Card className={styles.card}>
+    <Card className={styles.card} onClick={onClick}>
         <CardMedia
             className={styles.card__image}
             image={cardImage}
@@ -25,7 +26,10 @@ return (
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size='small' onClick={handleAddToCard}>Buy {price}$</Button>
+            <Button size='small' onClick={(e) => {
+                        e.stopPropagation(); 
+                        handleAddToCard();
+                        }}>Buy {price}$</Button>
             <Button size='small' variant='text'>Save</Button>
         </CardActions>
     </Card>

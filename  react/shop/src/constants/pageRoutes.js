@@ -2,7 +2,7 @@
 const product = "/product/:id";
 
 const productRoutes = {
-    product: product,
+    product: "/product/:id",
 }
 
 const cart = "/cart";
@@ -23,5 +23,5 @@ const commonRoutes = {
 export const pageRoutes = {
     commonRoutes,
     cartRoutes,
-    productRoutes,
+    productRoutes
 }

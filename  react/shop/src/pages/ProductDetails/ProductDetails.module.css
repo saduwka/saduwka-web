@@ -1,0 +1,10 @@
+.imgWrapper {
+    display: flex;
+    gap: 10px;
+    overflowX: auto;
+}
+.productImg {
+    width: 30rem;
+    height: 30rem;
+    object-fit: cover;
+}
