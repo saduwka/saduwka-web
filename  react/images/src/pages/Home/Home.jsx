@@ -30,7 +30,7 @@ const Home = () => {
                     q: searchTerm,
                     image_type: "photo",
                     order: filter,
-                    per_page:100
+                    per_page: 100
                 },
             });
     
@@ -42,16 +42,16 @@ const Home = () => {
             }));
     
             if (imagesData.length === 0) {
-                setMessage("Ничего не найдено. Попробуйте другой запрос.");
-                setImages([]); 
+                setMessage("Nothing found. Try a different search term.");
+                setImages([]);
             } else {
-                setMessage(`Найдено изображений: ${imagesData.length}`);
+                setMessage(`Images found: ${imagesData.length}`);
                 setImages(imagesData);
                 updateHistory(searchTerm);
             }
         } catch (error) {
-            console.error("Ошибка при загрузке изображений:", error);
-            setMessage("Ошибка загрузки. Проверьте подключение к интернету.");
+            console.error("Error loading images:", error);
+            setMessage("Loading error. Check your internet connection.");
         }
     };
 
