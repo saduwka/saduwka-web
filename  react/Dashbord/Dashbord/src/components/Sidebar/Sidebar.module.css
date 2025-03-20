@@ -1,0 +1,71 @@
+.aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100dvh;
+    background-color: var(--colors__background);
+    box-shadow: inset -0.2rem 0 0 rgba(255, 255, 255, 0.1);
+    padding: 3rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7.7rem
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+.navItem {
+    padding: 1.8rem 2rem;
+    border-radius: 13px;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.navItem:active {
+    background-color: var(--colors__inside);
+    transform: scale(0.95);
+}
+
+.navItem.active {
+    background-color: var(--colors__inside);
+}   
+
+.navItem:hover {
+    opacity: 0.7;
+    background-color: var(--colors__inside);
+}
+
+.navIcon {
+    color: var(--colors__accent);
+}
+
+.logout {
+    background-color: transparent;
+    border: none;
+    transition: .3s;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.logout:hover {
+    opacity: 0.7;
+}
+
+.logoutIcon {
+    color: var(--colors__accent);
+}

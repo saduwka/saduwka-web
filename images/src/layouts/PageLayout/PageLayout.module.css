@@ -1,14 +1,3 @@
-/* body {
-  margin: 0; 
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #d6d6d6;
-} */
-
 .container {
   width: 100vw;
   height: 100vh;
@@ -78,7 +67,6 @@
   justify-content: center;
 }
 
-/* Контент */
 .content {
   flex-grow: 1;
   display: flex;
@@ -92,7 +80,6 @@
   margin: 10px;
 }
 
-/* Галерея изображений */
 .imageGallery {
   display: flex;
   flex-wrap: wrap;
@@ -103,7 +90,6 @@
   min-height: 300px;
 }
 
-/* Адаптив */
 @media (max-width: 768px) {
   .mainContainer {
     flex-direction: column;
